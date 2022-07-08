@@ -1,10 +1,10 @@
 import './App.scss';
 import React, { Fragment } from 'react';
-import Header from './components/header'
+import HomeScreen from './screens/home';
 
 const App = () => (
   <Fragment>
-    <Header/>
+    <HomeScreen />
   </Fragment>
 )
 
