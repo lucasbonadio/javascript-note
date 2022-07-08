@@ -1,11 +1,15 @@
-import './App.css';
+import './App.scss';
+import React, { Fragment } from 'react';
+import { Notification, Section } from 'rbx';
 
-const App = () => {
-  return (
-    <div>
-      <p>Javascript Notes</p>
-    </div>
-  )
-}
+const App = () => (
+  <Fragment>
+    <Section />
+    <Notification color="success">
+      Javascript Notes
+    </Notification>
+    <Section />
+  </Fragment>
+)
 
 export default App;
