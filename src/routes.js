@@ -5,6 +5,7 @@ import RegisterScreen from './screens/auth/register'
 import LoginScreen from './screens/auth/login'
 import NotesIndexScreen from './screens/notes/index'
 import UserEditScreen from './screens/users/edit'
+import PrivateRoute from "./components/auth/private_route";
 
 const RoutesApp = () => (
     <BrowserRouter>
@@ -12,8 +13,12 @@ const RoutesApp = () => (
             <Route exact path="/" element={<HomeScreen />} />
             <Route exact path="/register" element={<RegisterScreen />} />
             <Route exact path="/login" element={<LoginScreen />} />
-            <Route exact path="/notes" element={<NotesIndexScreen />} />
-            <Route exact path="/users/edit" element={<UserEditScreen />} />
+            <Route exact path="/notes" element={<PrivateRoute redirectTo='/login'>
+                <NotesIndexScreen />
+            </PrivateRoute>} />
+            <Route exact path="/users/edit" element={<PrivateRoute redirectTo='/login'>
+                <UserEditScreen />
+            </PrivateRoute>} />
         </Routes>
     </BrowserRouter>
 );
