@@ -2,6 +2,7 @@ import React, { Fragment, useState } from 'react';
 import { Button, Field, Control, Input, Column, Section, Help, Label } from "rbx";
 import { Navigate } from "react-router-dom";
 import { ColumnGroup } from 'rbx/grid/columns/column-group';
+import UserService from '../../../services/users';
 
 function RegisterForm() {
     const [name, setName] = useState('');
@@ -14,10 +15,21 @@ function RegisterForm() {
         return <Navigate to={{pathname: '/login'}} />
     };
 
+    const handleSubmit = async (evt) => {
+        evt.preventDefault();
+
+        try {
+            const user = await UserService.register({name: name, email: email, password: password});
+            setRedirectToLogin(true);
+        } catch (error) {
+            setError(true);            
+        }
+    }
+
     return (
         <Fragment>
             <ColumnGroup centered>
-                <form>
+                <form onSubmit={handleSubmit}>
                     <Column size={12}>
                         <Field>
                             <Label size='small'>Name:</Label>

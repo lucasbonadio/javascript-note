@@ -14,7 +14,6 @@ const RegisterScreen = () => (
                     <Column size={3}>
                         <Card>
                             <Card.Content>
-                                <RegisterForm />
                                 <Section>
                                     <Column.Group centered>
                                         <Column size={12}>
@@ -30,6 +29,7 @@ const RegisterScreen = () => (
                                         </Column>
                                     </Column.Group>
                                 </Section>
+                                <RegisterForm />
                             </Card.Content>
                         </Card>
                     </Column>
