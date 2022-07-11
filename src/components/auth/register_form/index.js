@@ -11,20 +11,22 @@ function RegisterForm() {
     const [redirectToLogin, setRedirectToLogin] = useState(false);
     const [error, setError] = useState(false);
 
-    if(redirectToLogin) {
-        return <Navigate to={{pathname: '/login'}} />
-    };
-
     const handleSubmit = async (evt) => {
         evt.preventDefault();
 
         try {
-            const user = await UserService.register({name: name, email: email, password: password});
+            const user = await UserService.register({ name: name, email: email, password: password });
             setRedirectToLogin(true);
         } catch (error) {
-            setError(true);            
+            setError(true);
         }
     }
+
+    if (redirectToLogin) {
+        return <Navigate to={{ pathname: '/login' }} />
+    };
+
+
 
     return (
         <Fragment>
@@ -61,7 +63,7 @@ function RegisterForm() {
                                 </ColumnGroup>
                             </Control>
                         </Field>
-                        { error && <Help color='danger'>Email or password invalid</Help> }
+                        {error && <Help color='danger'>Email or password invalid</Help>}
                     </Column>
                 </form>
             </ColumnGroup>
