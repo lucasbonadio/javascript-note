@@ -29,6 +29,11 @@ function Notes(props) {
         setCurrentNote(note);
     }
 
+    const createNote = async (params) => {
+        const note = await NoteService.create();
+        fetchNotes();
+    }
+
     return (
         <Fragment>
             <div className="notes" id="notes">
@@ -44,7 +49,9 @@ function Notes(props) {
                     <List
                         notes={notes}
                         selectNote={selectNote}
-                        current_note={current_note} />
+                        createNote={createNote}
+                        current_note={current_note}
+                    />
                 </Menu>
 
 
