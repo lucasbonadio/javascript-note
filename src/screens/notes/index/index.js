@@ -1,7 +1,6 @@
 import React, { Fragment, useState } from 'react';
 import HeaderLogged from '../../../components/header_logged';
 import Notes from '../../../components/notes';
-import { Column } from "rbx";
 
 const NotesIndexScreen = () => {
     const [isOpen, setIsOpen] = useState(false);
